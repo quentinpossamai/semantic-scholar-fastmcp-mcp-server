@@ -54,11 +54,13 @@ class PaperFields:
         "fieldsOfStudy",
         "influentialCitationCount",
         "isOpenAccess",
+        "journal",
         "openAccessPdf",
         "paperId",
         "publicationDate",
         "publicationTypes",
         "publicationVenue",
+        "referenceCount",
         "references",
         "s2FieldsOfStudy",
         "title",
@@ -93,6 +95,7 @@ class AuthorDetailFields:
     # Valid fields for author details
     VALID_FIELDS = {
         "authorId",
+        "homepage",
         "name",
         "url",
         "affiliations",

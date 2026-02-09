@@ -187,7 +187,7 @@ async def make_request(
             headers = {}
             logger.debug("Not sending x-api-key header (no valid API key available)")
         # Add a sensible User-Agent to avoid being blocked by some servers
-        headers.setdefault("User-Agent", "semantic-scholar-mcp/1.0 (+https://github.com)")
+        headers.setdefault("User-Agent", "semantic-scholar-mcp/1.0 (+https://github.com/zongmin-yu/semantic-scholar-fastmcp-mcp-server)")
         if endpoint.startswith("http://") or endpoint.startswith("https://"):
             url = endpoint
         else:
