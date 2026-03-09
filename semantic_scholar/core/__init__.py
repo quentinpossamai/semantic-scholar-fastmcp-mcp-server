@@ -1,5 +1,6 @@
 """Shared core transport primitives for Semantic Scholar clients."""
 
+from .client import S2Client, SupportsRequestJson, get_default_client, make_compat_client
 from .exceptions import (
     S2ApiError,
     S2Error,
@@ -7,6 +8,25 @@ from .exceptions import (
     S2RateLimitError,
     S2TimeoutError,
     S2ValidationError,
+)
+from .requests import (
+    AuthorBatchDetailsRequest,
+    AuthorDetailsRequest,
+    AuthorPapersRequest,
+    AuthorSearchRequest,
+    PaperAutocompleteRequest,
+    PaperAuthorsRequest,
+    PaperBatchDetailsRequest,
+    PaperBulkSearchRequest,
+    PaperCitationsRequest,
+    PaperDetailsRequest,
+    PaperRecommendationsMultiRequest,
+    PaperRecommendationsSingleRequest,
+    PaperReferencesRequest,
+    PaperRelevanceSearchRequest,
+    PaperTitleSearchRequest,
+    RequestModel,
+    SnippetSearchRequest,
 )
 from .transport import (
     MakeRequestCompatTransport,
@@ -21,19 +41,40 @@ from .transport import (
 )
 
 __all__ = [
+    "AuthorBatchDetailsRequest",
+    "AuthorDetailsRequest",
+    "AuthorPapersRequest",
+    "AuthorSearchRequest",
     "MakeRequestCompatTransport",
+    "PaperAutocompleteRequest",
+    "PaperAuthorsRequest",
+    "PaperBatchDetailsRequest",
+    "PaperBulkSearchRequest",
+    "PaperCitationsRequest",
+    "PaperDetailsRequest",
+    "PaperRecommendationsMultiRequest",
+    "PaperRecommendationsSingleRequest",
+    "PaperReferencesRequest",
+    "PaperRelevanceSearchRequest",
+    "PaperTitleSearchRequest",
     "RateLimiter",
+    "RequestModel",
     "S2ApiError",
+    "S2Client",
     "S2Error",
     "S2NotFoundError",
     "S2RateLimitError",
     "S2TimeoutError",
     "S2Transport",
     "S2ValidationError",
+    "SnippetSearchRequest",
+    "SupportsRequestJson",
     "cleanup_client",
     "default_transport",
     "error_dict_to_exception",
+    "get_default_client",
     "get_api_key",
     "initialize_client",
+    "make_compat_client",
     "rate_limiter",
 ]

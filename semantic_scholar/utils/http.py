@@ -1,5 +1,7 @@
 """
 HTTP client compatibility helpers for the Semantic Scholar API Server.
+
+Prefer importing `semantic_scholar.core` for new shared-client integrations.
 """
 
 from typing import Any, Dict, Optional
@@ -25,7 +27,7 @@ async def make_request(
     base_url: Optional[str] = None,
 ) -> Any:
     """
-    Make a rate-limited request to the Semantic Scholar API.
+    Compatibility wrapper around the shared core transport.
 
     Returns:
         The JSON response or an error response dictionary.
