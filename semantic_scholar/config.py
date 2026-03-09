@@ -35,6 +35,51 @@ class ErrorType(Enum):
     VALIDATION = "validation"
     TIMEOUT = "timeout"
 
+
+VALID_PUBLICATION_TYPES = {
+    "Review",
+    "JournalArticle",
+    "CaseReport",
+    "ClinicalTrial",
+    "Conference",
+    "Dataset",
+    "Editorial",
+    "LettersAndComments",
+    "MetaAnalysis",
+    "News",
+    "Study",
+    "Book",
+    "BookSection",
+}
+
+VALID_FIELDS_OF_STUDY = {
+    "Computer Science",
+    "Medicine",
+    "Chemistry",
+    "Biology",
+    "Materials Science",
+    "Physics",
+    "Geology",
+    "Psychology",
+    "Art",
+    "History",
+    "Geography",
+    "Sociology",
+    "Business",
+    "Political Science",
+    "Economics",
+    "Philosophy",
+    "Mathematics",
+    "Engineering",
+    "Environmental Science",
+    "Agricultural and Food Sciences",
+    "Education",
+    "Law",
+    "Linguistics",
+}
+
+VALID_RECOMMENDATION_POOLS = ["recent", "all-cs"]
+
 # Field Constants
 class PaperFields:
     DEFAULT = ["title", "abstract", "year", "citationCount", "authors", "url"]
