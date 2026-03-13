@@ -14,7 +14,7 @@ class RateLimitConfig:
     SEARCH_LIMIT = (1, 1)  # 1 request per 1 second
     BATCH_LIMIT = (1, 1)   # 1 request per 1 second
     RECOMMENDATIONS_LIMIT = (1, 1)  # 1 request per 1 second
-    DEFAULT_LIMIT = (10, 1)  # 10 requests per 1 second
+    DEFAULT_LIMIT = (1, 1)  # 1 request per 1 second
     UNAUTHENTICATED_LIMIT = (100, 300)  # 100 requests per 5 minutes
     
     # Endpoints categorization

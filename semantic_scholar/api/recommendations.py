@@ -20,7 +20,7 @@ def _client() -> S2Client:
     return make_compat_client(make_request)
 
 
-@mcp.tool()
+@mcp.tool(description="Recommend papers similar to a single source paper using Semantic Scholar recommendation signals.")
 async def get_paper_recommendations_single(
     context: Context,
     paper_id: str,
@@ -28,6 +28,13 @@ async def get_paper_recommendations_single(
     limit: int = 100,
     from_pool: str = "recent",
 ) -> Dict:
+    """Get recommendations based on one source paper.
+
+    Returns papers related to the input paper using Semantic Scholar's content
+    and citation-based recommendation signals. Callers can control the result
+    field set, the maximum number of recommendations, and the recommendation
+    pool used by the upstream API.
+    """
     try:
         request = PaperRecommendationsSingleRequest(
             paper_id=paper_id,
@@ -57,7 +64,7 @@ async def get_paper_recommendations_single(
         )
 
 
-@mcp.tool()
+@mcp.tool(description="Recommend papers from a set of positive examples and optional negative examples.")
 async def get_paper_recommendations_multi(
     context: Context,
     positive_paper_ids: List[str],
@@ -65,6 +72,13 @@ async def get_paper_recommendations_multi(
     fields: Optional[str] = None,
     limit: int = 100,
 ) -> Dict:
+    """Get recommendations based on multiple positive and negative examples.
+
+    Use this when recommendation quality depends on steering toward several
+    relevant papers while optionally steering away from unwanted ones. The
+    response contains papers similar to the positive examples and dissimilar to
+    the negative set, with customizable return fields.
+    """
     try:
         request = PaperRecommendationsMultiRequest(
             positive_paper_ids=positive_paper_ids,
