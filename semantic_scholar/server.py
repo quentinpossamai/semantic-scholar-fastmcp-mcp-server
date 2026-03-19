@@ -102,8 +102,17 @@ async def run_server():
         await initialize_client()
 
         # Start the server
-        logger.info("Starting Semantic Scholar Server")
-        task = asyncio.create_task(mcp.run_async())
+        transport = os.getenv("SEMANTIC_SCHOLAR_MCP_TRANSPORT", "stdio").strip().lower()
+        mcp_host = os.getenv("SEMANTIC_SCHOLAR_MCP_HOST", "0.0.0.0").strip()
+        mcp_port = int(os.getenv("SEMANTIC_SCHOLAR_MCP_PORT", "8080"))
+        logger.info("Starting Semantic Scholar Server (transport=%s)", transport)
+
+        if transport in ("sse", "streamable-http"):
+            task = asyncio.create_task(
+                mcp.run_async(transport=transport, host=mcp_host, port=mcp_port)
+            )
+        else:
+            task = asyncio.create_task(mcp.run_async())
 
         # Start the HTTP bridge (ASGI) in the same process so the service
         # exposes REST endpoints on a local port. The `bridge.app` is a thin
