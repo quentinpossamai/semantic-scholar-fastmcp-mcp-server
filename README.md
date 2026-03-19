@@ -72,11 +72,40 @@ This structure:
 
 ## System Requirements
 
-- Python 3.8+
-- FastMCP framework
+- Python 3.10+
 - Environment variable for API key (optional)
 
 ## Installation
+
+### Quick Install (PyPI)
+
+```bash
+pip install semantic-scholar-fastmcp
+```
+
+Or run directly with [`uvx`](https://docs.astral.sh/uv/):
+
+```bash
+uvx semantic-scholar-fastmcp
+```
+
+### MCP Client Configuration
+
+For any MCP client that supports `uvx`:
+
+```json
+{
+  "mcpServers": {
+    "semantic-scholar": {
+      "command": "uvx",
+      "args": ["semantic-scholar-fastmcp"],
+      "env": {
+        "SEMANTIC_SCHOLAR_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
 
 ### Installing via Smithery
 
@@ -92,41 +121,20 @@ npx -y @smithery/cli install semantic-scholar-fastmcp-mcp-server --client claude
 
 ```bash
 git clone https://github.com/YUZongmin/semantic-scholar-fastmcp-mcp-server.git
-cd semantic-scholar-server
+cd semantic-scholar-fastmcp-mcp-server
 ```
 
-2. Install FastMCP and other dependencies following: https://github.com/jlowin/fastmcp
+2. Install in development mode:
 
-3. Configure FastMCP:
-
-For Claude Desktop users, you'll need to configure the server in your FastMCP configuration file. Add the following to your configuration (typically in `~/.config/claude-desktop/config.json`):
-
-```json
-{
-  "mcps": {
-    "Semantic Scholar Server": {
-      "command": "/path/to/your/venv/bin/fastmcp",
-      "args": [
-        "run",
-        "/path/to/your/semantic-scholar-server/run.py"
-      ],
-      "env": {
-        "SEMANTIC_SCHOLAR_API_KEY": "your-api-key-here"  # Optional
-      }
-    }
-  }
-}
+```bash
+pip install -e ".[dev]"
 ```
 
-Make sure to:
+3. Run the server:
 
-- Replace `/path/to/your/venv/bin/fastmcp` with the actual path to your FastMCP installation
-- Replace `/path/to/your/semantic-scholar-server/run.py` with the actual path to run.py on your machine
-- If you have a Semantic Scholar API key, add it to the `env` section. If not, you can remove the `env` section entirely
-
-4. Start using the server:
-
-The server will now be available to your Claude Desktop instance. No need to manually run any commands - Claude will automatically start and manage the server process when needed.
+```bash
+semantic-scholar-mcp-server
+```
 
 ### API Key (Optional)
 
